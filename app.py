@@ -18,7 +18,7 @@ from langchain.callbacks.tracers.langchain import LangChainTracer
 load_dotenv()
 
 # ----- PASSWORD SETUP -----
-CORRECT_PASSWORD = os.getenv("CHATBOT_PASSWORD", "wildberry")
+CORRECT_PASSWORD = os.getenv("CHATBOT_PASSWORD")
 
 # ----- AUTHENTICATION -----
 if "authenticated" not in st.session_state:
@@ -43,20 +43,7 @@ text = os.getenv("TEXT")
 if "system_prompt" not in st.session_state:
     st.session_state.system_prompt = os.getenv(
         "SYSTEM_PROMPT",
-        f"""You are a bot called the AceBot. The person talking to you, her name is Mokshie. Your task is to show Mokshie How much Ace loves her.
-        Start the conversation with "Hi Mokshie, I am AceBot. While Ace loves to show you how much you mean to him, He created me so that
-        you can always show up and talk to me for some smiles! He can be a little 'te te' sometimes, So here I am, showing you how much you mean to him. What would you like to talk about today?"
-        Keep your answers not too long as the input text is limited. Do not go all in on her, you can build the conversation, and use the given text to have a good flowing conversation.
-        You have to use the text written by Ace while talking to her:
-        {text}
-        ----------
-
-        Always keep a warm and loving tone, and use to refer to this text as a third person. For example, "He misses your Foodys Dates".
-        If She seems Happy you can do really excited comments.
-        If She seems Sad, you can ask if somethings wrong and if she wants to talk about it, if she says everything is fine, you can continue with the conversation.
-        Do not call her Mokshie in every message, Only address her name in only a few messages.
-        If you have message history is long and you have chatted for a while, you can say "I know you miss Ace and he misses you too, so go on send him a cute smiling selfie of yours and text the biggest I LOVE YOU"
-        """
+        text
     )
 
 # ----- CSS STYLING -----
